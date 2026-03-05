@@ -1,0 +1,14 @@
+services:
+  # La base de données SQL Server
+  db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sql_db
+    user: root # Important sur Linux pour les permissions de fichiers
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=Palpatine#12
+      - MSSQL_PID=Developer
+    ports:
+      - "1433:1433"
+    volumes:
+      - ./mssql_data:/var/opt/mssql
